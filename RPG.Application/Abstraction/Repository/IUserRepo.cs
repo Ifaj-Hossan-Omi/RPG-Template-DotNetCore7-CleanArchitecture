@@ -9,7 +9,7 @@ namespace RPG.Application.Abstraction.Repository
 {
     public interface IUserRepo
     {
-        Task<User> GetAllUser();
+        Task<List<User>> GetAllUser();
     //     Task<User> GetUserByUsername(string username);
     //     Task<User> GetUserByUsernameAndPassword(string username, string password);
     //     Task<User> AddUser(User user);
