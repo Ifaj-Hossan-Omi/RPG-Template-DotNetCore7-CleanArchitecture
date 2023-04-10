@@ -1,0 +1,38 @@
+﻿using RPG.Domain.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+
+namespace RPG.Infrastructure.Data
+{
+     public class DataContext : DbContext
+     {
+         public DataContext(DbContextOptions<DataContext> options) : base(options)
+         {
+
+         }
+         public DbSet<User> Users => Set<User>();
+
+     }
+
+     class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
+     {
+         // private IDesignTimeDbContextFactory<DataContext> _designTimeDbContextFactoryImplementation;
+         public DataContext CreateDbContext(string[] args)
+         {
+             var configuration = new ConfigurationBuilder()
+                 // .SetBasePath(Directory.GetCurrentDirectory())
+                 .AddJsonFile("appsettings.json")
+                 .Build();
+             var optionBuilder = new DbContextOptionsBuilder<DataContext>();
+             optionBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+             return new DataContext(optionBuilder.Options);
+             // return _designTimeDbContextFactoryImplementation.CreateDbContext(args);
+         }
+     }
+}
