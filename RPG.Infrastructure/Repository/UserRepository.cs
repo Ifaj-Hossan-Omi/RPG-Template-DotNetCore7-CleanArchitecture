@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RPG.Application.Abstraction.Repository;
-using RPG.Domain.Models;
+using RPG.Domain.Entity;
 using RPG.Infrastructure.Data;
 
 namespace RPG.Infrastructure.Repository

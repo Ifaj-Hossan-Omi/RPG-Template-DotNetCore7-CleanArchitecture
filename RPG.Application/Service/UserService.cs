@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using RPG.Application.Abstraction.Repository;
 using RPG.Application.Abstraction.Service;
-using RPG.Domain.Models;
+using RPG.Domain.Entity;
+using RPG.Domain.ServiceResponse;
 
 namespace RPG.Application.Service
 {
@@ -17,9 +18,11 @@ namespace RPG.Application.Service
         {
             _userRepo = userRepo;
         }
-        public Task<List<User>> GetAllUser()
+        public async Task<ServiceResponse<List<User>>> GetAllUser()
         {
-            return _userRepo.GetAllUser();
+            var serviceResponse = new ServiceResponse<List<User>>();
+            serviceResponse.Data = await _userRepo.GetAllUser();
+            return serviceResponse;
         }
     }
 }

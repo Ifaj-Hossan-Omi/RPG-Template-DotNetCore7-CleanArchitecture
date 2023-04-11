@@ -42,4 +42,8 @@
     <ProjectReference Include="..\RPG.Application\RPG.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstraction\" />
+  </ItemGroup>
+
 </Project>
